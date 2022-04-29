@@ -1,0 +1,11 @@
+integrantes: CARLOS FILO --- LEONEL POLANCO 
+
+RUTAS :
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('lista-car/', lista_vehiculo),
+    path('usuario/',personas),
+    path('vehiculo/', vehiculo),
+    path('lista_reparaciones/<id>', reparaciones),
+]

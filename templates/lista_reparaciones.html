@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Lista Reparaciones</title>
+</head>
+
+<body>
+    <header class="p-3 mb-2 bg-success text-white text-dark text-center">
+        <h1> SISTEMA DE REPARACIÓN</h1>
+    </header>
+
+    <div class="container md-7">
+
+        <div class="col-md-7">
+            <table class="table">
+
+                <tr>
+                    <th> Reparacion</th>
+                    <td><span>{{reparaciones.id}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th> Fecha</th>
+                    <td><span>{{reparaciones.fecha}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th> Cliente: </th>
+                    <td><span>{{reparaciones.vehiculo.usuario}}</span></td>
+                </tr>
+                <tr>
+                    <th> Conductor: </th>
+                    <td><span>{{reparaciones.vehiculo.conductor}}</span></td>
+                </tr>
+                <tr>
+                    <th> Direccion Cliente: </th>
+                    <td><span>{{reparaciones.vehiculo.usuario.direccion}}</span></td>
+                </tr>
+                <tr>
+                    <th> Telefono: </th>
+                    <td><span>{{reparaciones.vehiculo.usuario.telefono}}</span></td>
+                </tr>
+                <tr>
+                    <th> Email: </th>
+                    <td><span>{{reparaciones.vehiculo.usuario.correo}}</span></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <table class="table ">
+            <thead>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center  bg-success text-light">DETALLES DE LA REPARACION</li>
+
+                        <tr>
+                            <th scope="col">-</th>
+                            <th scope="col">CODIGO</th>
+                            <th scope="col">DESCRIPCION</th>
+                            <th scope="col">PRECIO</th>
+                            <th scope="col">CANTIDAD</th>
+                            <th scope="col">SUBTOTAL</th>
+                        </tr>
+
+                    </ul>
+                </div>
+            </thead>
+            <tbody >
+                {% for reg in detalle %}
+                <tr>
+                    <th scope="row">-</th>
+                    <td>{{ reg.id}} </a></td>
+                    <td>{{ reg.servicio.description}}</td>
+                    <td>{{ reg.costo}}</td>
+                    <td>{{ reg.cantidad}}</td>
+                    <td>{% widthratio reg.costo 1 reg.cantidad %}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        
+
+  
+    <div class="container">
+        <div class="row">
+          <div class="col ">
+            <h1>TOTAL</h1>
+          </div>
+          <div class="col-2">
+            <h1>{{total}}</h1>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

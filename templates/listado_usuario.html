@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Lista Usuarios</title>
+</head>
+
+<body>
+  <header class="p-3 mb-2 bg-success text-white text-dark text-center">
+    <h1> LISTA DE CLIENTES</h1>
+  </header>
+
+  <div class="container md-5">
+    <form class="row g-3" method="POST" action="/vehiculo/">
+      {% csrf_token %}
+      <div class="col-md-4">
+        <h1>CLIENTES</h1>
+        <select type="email" class="form-control" id="inputEmail4" name="id">
+          <option selected="">Seleccione al Cliente</option>
+          {% for reg in usuario %}
+          <option value="{{reg.id}}">{{ reg }}</option>
+          {% endfor %}
+        </select> <br>
+        <button type="submit" class="btn btn-success">Consultar</button>
+      </div>
+
+      <div class="col-md-8">
+        <table class="table">
+          <thead>
+            <tr class="bg-success text-white">
+              <th scope="col">#</th>
+              <th scope="col">PLACA</th>
+              <th scope="col">MODELO</th>
+              <th scope="col">MARCA</th>
+              <th scope="col">CONDUCTOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for reg in vehiculos %}
+            <tr>
+              <th scope="row">1</th>
+              <td><a href="/lista_reparaciones/{{reg.id}}">  {{ reg.placa}} </a></td>
+              <td>{{ reg.modelo}}</td>
+              <td>{{ reg.marca}}</td>
+              <td>{{ reg.conductor}}</td>
+            </tr>
+            {% endfor %}
+            
+          </tbody>
+        </table>
+
+      </div>
+
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
